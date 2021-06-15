@@ -36,7 +36,7 @@ def index():
         # 給予一組空資料避免 JS 函數 error
         stock_data = {"data": [{ "Datetime": "", "Open": "", "High": "", "Low": "", "Close": "", "Adj Close": "", "Volume": ""}]}
     
-    # 如果由其他路由重新導向，則使用 session 參數下載資料
+    #  如果由其他路由重新導向，則使用 session 參數下載資料
     else:
         # yahoo finance API 參數
         # ------------------------------------------------------------

@@ -2,7 +2,7 @@ var price_last; //最後一根k線
 var price_last_open;
 var stock_number = 0000; //股票代號變數。預設股票代號為0000
 var refresh = false;
-//需要回傳的變數 : 回傳stock_number和mode來獲取json檔
+//  需要回傳的變數 : 回傳stock_number和mode來獲取json檔
 
 function change_data(data) {
     new_data = [];
