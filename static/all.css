@@ -1,0 +1,30 @@
+body {
+    background-color: hsl(240, 0%, 90%);
+}
+
+.navbar {
+    min-height: 100px;
+}
+
+.navbar-brand {
+    padding: 0 15px;
+    height: 80px;
+    line-height: 80px;
+    font-size: 43px;
+    font-family: fantasy;
+}
+
+h1 {
+    font-size: 30px;
+    font-family: Georgia;
+}
+
+h2 {
+    font-size: 30px;
+    font-family: Georgia;
+}
+
+h3 {
+    font-size: 30px;
+    font-family: Georgia;
+}

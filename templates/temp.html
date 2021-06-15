@@ -1,0 +1,43 @@
+<form method="post">
+    {{ form.hidden_tag() }}
+    {{ form.stocknum(class="form-control mr-sm-2", id="input", type="text", onfocus="this.value=''", placeholder="#0000") }}
+    {{ form.submit(class="btn btn-outline-success my-2 my-sm-0", type="button", value="Search", onClick="show()") }}
+</form>
+
+
+
+from flask_wtf import FlaskForm
+from wtforms import StringField, SubmitField
+from wtforms.validators import DataRequired
+
+
+'''form = Read()
+    if form.validate_on_submit():
+        session['stocknum'] = form.stocknum.data
+        return redirect(url_for('read', stocknum = form.stocknum.data))
+    return render_template('index.html', form=form)'''
+
+@app.route('/read')
+def read():
+    # The parameters of this block should depends on user's input
+    # ------------------------------------------------------------
+    stockNo = session.get('stocknum')                      # 上市: .TW   上櫃、興櫃: .TWO
+    start_date = '2021-05-27'
+    end_date = '2021-06-11'
+    interval = '60m'                            # 1m,2m,5m,15m,30m,60m,90m,1h,1d,5d,1wk,1mo,3mo
+    # ------------------------------------------------------------
+    data = yf.download(stockNo, start=start_date, end=end_date, interval=interval)
+
+    result = data.to_json(orient="table")
+    stock_data = json.loads(result)
+    stock_data.pop('schema', None)
+    stock.insert_one(stock_data)
+    return redirect(url_for('index'))
+
+
+
+    class Read(FlaskForm):
+    stocknum = StringField('Stock number', validators=[DataRequired()])
+    submit = SubmitField('Submit')
+
+    <script src="{{ url_for('static',filename ='stock.js') }}"></script>
